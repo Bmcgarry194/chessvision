@@ -1,0 +1,4 @@
+chessvision
+*.pyc
+.DS_Store
+.env
