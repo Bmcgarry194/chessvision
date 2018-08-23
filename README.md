@@ -1,5 +1,5 @@
-# chessvision
-Visualize your chess history from Chess.com
+# ChessVision
+Interactively visualize your chess history from Chess.com
 
 This app gives you a way to visually understand the history of your chess games from Chess.com. 
 It includes graphs of:
@@ -22,8 +22,8 @@ To run locally on your own browser:
 
 * Create a virtual env and activate it
 ```bash
-virtualenv env
-source env/bin/activate
+virtualenv venv
+source venv/bin/activate
 ```
 * Pip install from the requirements.txt
 ```bash
