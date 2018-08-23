@@ -35,7 +35,7 @@ pip install -r requirements.txt
 python src/app.py
 ```
 
-* Finally, paste the address given of your local host into your address bar or command + click on the address in terminal
+* Finally, paste the address given of your local host into your browser's address bar or command + click on the address in terminal
 
 Here is quick visual overview of how to use chessvision:
 
