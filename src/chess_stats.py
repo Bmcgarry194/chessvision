@@ -8,25 +8,33 @@ import chess.pgn
 import matplotlib.pyplot as plt
 from io import StringIO
 
-def get_monthly_archives(username):
+def get_monthly_archives(username, agent_name='chessvision_app', email=None):
     '''Returns a list of months in which the user played a game'''
     
+    headers={
+        'User-Agent': agent_name,
+        'email': email 
+    }
     try:
-        response = requests.get(f'https://api.chess.com/pub/player/{username}/games/archives')
+        response = requests.get(f'https://api.chess.com/pub/player/{username}/games/archives', headers=headers)
         return json.loads(response.content.decode('utf-8'))['archives'] 
     except:
         return []
         
-def get_player_games(username):
+def get_player_games(username, agent_name='chessvision_app', email=None):
     '''return a list of all games played'''
+    headers={
+        'User-Agent': agent_name,
+        'email': email 
+    }
     
-    months = get_monthly_archives(username)
+    months = get_monthly_archives(username, agent_name=agent_name, email=email)
     games = []
     if not months:
         return games
     
     for month in months:
-        response = requests.get(month)
+        response = requests.get(month, headers=headers)
         for game in json.loads(response.content.decode('utf-8'))['games']:
             games.append(game)
     return games
@@ -222,7 +230,7 @@ def move_evaluation(pgn_string, engine_path, evaluation_time=5000, output='list'
         if handler.info["score"][1][0]:
             centipawn_eval.append(handler.info["score"][1][0])
         else:
-            # mate in 1 = 6000 and is discounted(1/moves to mate) as the mate goes up as there as a high chance of not seeing the mate
+            # mate in 1 = 6000 and is discounted(1/moves to mate) as the mate goes up as there as a high chance of not seeing the mate. This is not a great solution...
             mate_in = (1 / handler.info["score"][1][1]) * 6000 
             centipawn_eval.append(mate_in)
             
