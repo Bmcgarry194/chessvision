@@ -8,27 +8,25 @@ import chess.pgn
 import matplotlib.pyplot as plt
 from io import StringIO
 
-def get_monthly_archives(username, agent_name='chessvision_app', email=None):
+def get_monthly_archives(username):
     '''Returns a list of months in which the user played a game'''
     
-    headers={
-        'User-Agent': agent_name,
-        'email': email 
+    headers={'user-agent': '''ChessVision App, Author: Brian Mcgarry, GitHub: https://github.com/Bmcgarry194/chessvision, Email: bmcgarry816@gmail.com'''
     }
+        
     try:
         response = requests.get(f'https://api.chess.com/pub/player/{username}/games/archives', headers=headers)
         return json.loads(response.content.decode('utf-8'))['archives'] 
     except:
         return []
         
-def get_player_games(username, agent_name='chessvision_app', email=None):
+def get_player_games(username):
     '''return a list of all games played'''
     headers={
-        'User-Agent': agent_name,
-        'email': email 
+        'user-agent': '''ChessVision App, Author: Brian Mcgarry, GitHub: https://github.com/Bmcgarry194/chessvision, Email: bmcgarry816@gmail.com'''
     }
     
-    months = get_monthly_archives(username, agent_name=agent_name, email=email)
+    months = get_monthly_archives(username)
     games = []
     if not months:
         return games
