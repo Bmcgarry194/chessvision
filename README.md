@@ -29,10 +29,14 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-
-* Run **python src/app.py** to start the app
+* Move into src directory
 ```bash
-python src/app.py
+cd src/
+```
+
+* Run **python app.py** to start the app
+```bash
+python app.py
 ```
 
 * Finally, paste the address given of your local host into your browser's address bar or command + click on the address in terminal
