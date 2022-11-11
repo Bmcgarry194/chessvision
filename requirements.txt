@@ -23,7 +23,7 @@ numpy==1.15.1
 pandas==0.23.4
 plotly==3.1.1
 pyparsing==2.2.0
-pyspark==2.3.0
+pyspark==3.2.2
 python-chess==0.23.9
 python-dateutil==2.7.3
 pytz==2018.5
